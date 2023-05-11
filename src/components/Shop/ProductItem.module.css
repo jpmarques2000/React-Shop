@@ -1,0 +1,22 @@
+.products {
+  display: flex;
+  justify-content: space-between;
+  margin: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #ccc;
+}
+
+.products h3 {
+  margin: 0 0 0.25rem 0;
+}
+
+.price {
+  margin-top: 0.25rem;
+  font-weight: bold;
+  color: lightblue;
+  font-size: 1.2rem;
+}
+
+.description {
+  font-size: italic;
+}
