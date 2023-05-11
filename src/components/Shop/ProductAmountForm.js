@@ -20,7 +20,7 @@ function ProductAmountForm(props) {
       setAmountIsValid(false);
       return;
     }
-
+    setAmountIsValid(true);
     props.onAddToCart(+enteredAmount);
   };
 
@@ -39,7 +39,7 @@ function ProductAmountForm(props) {
         }}
       />
       <button>+ Add</button>
-      {!amountIsValid && <p>Please enter a valid amount between 1 and 99</p>}
+      {!amountIsValid && <p>Please enter a valid amount (1-99)</p>}
     </form>
   );
 }
