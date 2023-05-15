@@ -1,32 +1,60 @@
-import React from "react";
+import React, { Fragment } from "react";
 
-import { useSelector } from "react-redux";
-import Card from "../UI/Card";
+import { useSelector, useDispatch } from "react-redux";
 import CartItem from "./CartItem";
 import classes from "./Cart.module.css";
+import Modal from "../UI/Modal";
+import { uiActions } from "../../store/ui-slice";
 
 const Cart = () => {
   const cartItems = useSelector((state) => state.cart.items);
+  const totalAmount = useSelector((state) => state.cart.totalAmount);
 
-  return (
-    <Card className={classes.cart}>
-      <h2>My Cart</h2>
-      <ul>
-        {cartItems.map((cartItem) => (
-          <CartItem
-            key={cartItem.id}
-            item={{
-              id: cartItem.id,
-              title: cartItem.title,
-              totalPrice: cartItem.totalPrice,
-              price: cartItem.price,
-              quantity: cartItem.quantity,
-            }}
-          />
-        ))}
-      </ul>
-    </Card>
+  const dispatch = useDispatch();
+
+  const closeCartHandler = () => {
+    dispatch(uiActions.toggle());
+  };
+
+  const cartItemsDisplay = (
+    <ul className={classes["cart-items"]}>
+      {cartItems.map((cartItem) => (
+        <CartItem
+          key={cartItem.id}
+          item={{
+            id: cartItem.id,
+            title: cartItem.title,
+            totalPrice: cartItem.totalPrice,
+            price: cartItem.price,
+            quantity: cartItem.quantity,
+          }}
+        />
+      ))}
+    </ul>
   );
+
+  const modalActions = (
+    <div className={classes.actions}>
+      <button className={classes["button--alt"]} onClick={closeCartHandler}>
+        Close
+      </button>
+      <button className={classes.button}>Order</button>
+    </div>
+  );
+
+  const cartModalContentDisplay = (
+    <Fragment>
+      <h2 className={classes.title}>My Cart</h2>
+      {cartItemsDisplay}
+      <div className={classes.total}>
+        <span>Total: </span>
+        <span>{`R$ ${totalAmount.toFixed(2)}`}</span>
+      </div>
+      {modalActions}
+    </Fragment>
+  );
+
+  return <Modal onClose={closeCartHandler}>{cartModalContentDisplay}</Modal>;
 };
 
 export default Cart;

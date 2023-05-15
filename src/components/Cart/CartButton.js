@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment } from "react";
 
 import classes from "./CartButton.module.css";
 import { useDispatch, useSelector } from "react-redux";
@@ -13,10 +13,15 @@ const CartButton = () => {
   };
 
   return (
-    <button onClick={toggleCartHandler} className={classes.button}>
-      <span>My Cart</span>
-      <span className={classes.badge}>{cartTotalQuantity}</span>
-    </button>
+    <Fragment>
+      <button onClick={toggleCartHandler} className={classes.button}>
+        <span>New Product</span>
+      </button>
+      <button onClick={toggleCartHandler} className={classes.button}>
+        <span>My Cart</span>
+        <span className={classes.badge}>{cartTotalQuantity}</span>
+      </button>
+    </Fragment>
   );
 };
 

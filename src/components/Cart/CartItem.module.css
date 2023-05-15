@@ -1,20 +1,7 @@
-.cartItem {
-  margin: 1rem 0;
-  background-color: #575757;
-  padding: 1rem;
+.item{
+  border-bottom: 1px solid #ccc;
+  padding: 0.5rem;
 }
-
-.cartItem header {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-}
-
-.cartItem h3 {
-  margin: 0 0 0.5rem 0;
-  font-size: 1.75rem;
-}
-
 .details {
   display: flex;
   justify-content: space-between;
@@ -22,8 +9,11 @@
 }
 
 .quantity span {
-  font-size: 1.5rem;
   font-weight: bold;
+  border: 1px solid #26b4df;
+  padding: 0.25rem 0.75rem;
+  border-radius: 6px;
+  color: #26b4df;
 }
 
 .price {
@@ -39,20 +29,38 @@
 
 .actions {
   display: flex;
-  justify-content: flex-end;
-  margin: 0.5rem 0;
+  flex-direction: column;
 }
 
 .actions button {
-  background-color: transparent;
-  border: 1px solid white;
-  margin-left: 0.5rem;
-  padding: 0.15rem 1rem;
+  font: inherit;
+  cursor: pointer;
+  background-color: #4ca5b7;
+  border: 1px solid #4ca5b7;
   color: white;
+  padding: 0.5rem 2rem;
+  border-radius: 25px;
+  margin-left: 0.25rem;
+}
+
+@media (min-width: 768px) {
+  .actions {
+    flex-direction: row;
+  }
 }
 
 .actions button:hover,
 .actions button:active {
-  background-color: #4b4b4b;
+  background-color: #2817af;
+  border-color: #2817af;
+  color: white;
+}
+
+.actions .button--alt {
+  color: #4ca5b7;
+}
+
+.actions .button {
+  background-color: #4ca5b7;
   color: white;
 }
