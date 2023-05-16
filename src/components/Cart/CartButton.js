@@ -12,9 +12,13 @@ const CartButton = () => {
     dispatch(uiActions.toggle());
   };
 
+  const toggleNewProductFormHandler = () => {
+    dispatch(uiActions.toggleNewProduct());
+  };
+
   return (
     <Fragment>
-      <button onClick={toggleCartHandler} className={classes.button}>
+      <button onClick={toggleNewProductFormHandler} className={classes.button}>
         <span>New Product</span>
       </button>
       <button onClick={toggleCartHandler} className={classes.button}>
