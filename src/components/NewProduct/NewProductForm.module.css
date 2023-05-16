@@ -55,3 +55,12 @@
   background-color: #4ca5b7;
   color: white;
 }
+
+.invalid label {
+  color: #ca3e51;
+}
+
+.invalid input {
+  border-color: #aa0b20;
+  background-color: #ffeff1;
+}
