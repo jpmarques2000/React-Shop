@@ -5,6 +5,7 @@ import classes from "./NewProductForm.module.css";
 import { useDispatch } from "react-redux";
 import { uiActions } from "../../store/ui-slice";
 import Input from "./Input";
+import { productActions } from "../../store/product-slice";
 
 const isEmpty = (value) => value.trim() === "";
 
@@ -57,12 +58,16 @@ const NewProductForm = () => {
       return;
     }
 
-    console.log({
-      productName,
-      productDescription,
-      productPrice,
-      productImageUrl,
-    });
+    dispatch(
+      productActions.addNewProduct({
+        id: Math.random(),
+        title: productName,
+        description: productDescription,
+        price: productPrice,
+        imageUrl: productImageUrl,
+      })
+    );
+    closeNewProductFormHandler();
   };
 
   const nameControlClasses = `${classes.control} ${
@@ -111,7 +116,7 @@ const NewProductForm = () => {
         input={{
           id: "price",
           type: "number",
-          defaultValue: "0",
+          step: "any",
         }}
       />
       {!formInputIsValid.price && <p>Please enter a valid price</p>}
