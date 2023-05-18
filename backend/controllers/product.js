@@ -27,7 +27,7 @@ export const addProduct = (req, res) => {
     if (err) {
       return res.json(err);
     } else {
-      return res.status(200).json("New Product succefuly created.");
+      return res.status(200).json("New Product successfully created.");
     }
   });
 };
@@ -47,7 +47,7 @@ export const updateProduct = (req, res) => {
     if (err) {
       return res.json(err);
     } else {
-      return res.status(200).json("Product succefuly updated.");
+      return res.status(200).json("Product successfully updated.");
     }
   });
 };
@@ -59,7 +59,7 @@ export const deleteProduct = (req, res) => {
     if (err) {
       return res.json(err);
     } else {
-      return res.status(200).json("Product succefuly deleted.");
+      return res.status(200).json("Product successfully deleted.");
     }
   });
 };

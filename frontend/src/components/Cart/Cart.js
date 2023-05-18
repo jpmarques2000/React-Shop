@@ -5,8 +5,10 @@ import CartItem from "./CartItem";
 import classes from "./Cart.module.css";
 import Modal from "../UI/Modal";
 import { uiActions } from "../../store/ui-slice";
+import { fetchCartData, sendCartData } from "../../store/cart-actions";
 
 const Cart = () => {
+  const cart = useSelector((state) => state.cart);
   const cartItems = useSelector((state) => state.cart.items);
   const totalAmount = useSelector((state) => state.cart.totalAmount);
 
@@ -14,6 +16,16 @@ const Cart = () => {
 
   const closeCartHandler = () => {
     dispatch(uiActions.toggle());
+  };
+
+  const cartOrderHandler = () => {
+    dispatch(
+      sendCartData({
+        totalPrice: cart.totalAmount,
+        totalQuantity: cart.totalQuantity,
+        cartItems,
+      })
+    );
   };
 
   const cartItemsDisplay = (
@@ -38,7 +50,9 @@ const Cart = () => {
       <button className={classes["button--alt"]} onClick={closeCartHandler}>
         Close
       </button>
-      <button className={classes.button}>Order</button>
+      <button className={classes.button} onClick={cartOrderHandler}>
+        Order
+      </button>
     </div>
   );
 

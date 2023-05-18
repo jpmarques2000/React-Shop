@@ -7,7 +7,6 @@ import { uiActions } from "../../store/ui-slice";
 import Input from "./Input";
 import { productActions } from "../../store/product-slice";
 import { sendNewProductData } from "../../store/product-actions";
-import axios from "axios";
 
 const isEmpty = (value) => value.trim() === "";
 

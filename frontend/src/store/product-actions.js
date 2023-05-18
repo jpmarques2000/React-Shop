@@ -5,7 +5,7 @@ import axios from "axios";
 export const fetchProductData = () => {
   return async (dispatch) => {
     const fetchData = async () => {
-      const response = await fetch("http://localhost:8800/");
+      const response = await fetch("http://localhost:8800/product/");
 
       if (!response.ok) {
         throw new Error("Could not fetch products data");
@@ -32,7 +32,7 @@ export const sendNewProductData = (product) => {
   return async (dispatch) => {
     const sendRequest = async () => {
       await axios
-        .post("http://localhost:8800/", {
+        .post("http://localhost:8800/product/", {
           name: product.name,
           description: product.description,
           price: product.price,
@@ -45,6 +45,41 @@ export const sendNewProductData = (product) => {
     };
     try {
       await sendRequest();
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
+
+export const deleteProductData = (id) => {
+  return async () => {
+    const sendDeleteRequest = async () => {
+      await axios.delete("http://localhost:8800/product/" + id).then(() => {});
+    };
+    try {
+      await sendDeleteRequest();
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
+
+export const updateProductData = (product) => {
+  return async () => {
+    const sendUpdateRequest = async () => {
+      await axios
+        .put("http://localhost:8800/product/" + product.id, {
+          name: product.name,
+          description: product.description,
+          price: product.price,
+          image_url: product.imageUrl,
+        })
+        .then((response) => {
+          console.log(response);
+        });
+    };
+    try {
+      await sendUpdateRequest();
     } catch (error) {
       console.log(error);
     }

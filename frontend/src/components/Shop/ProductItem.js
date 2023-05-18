@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux";
 import classes from "./ProductItem.module.css";
 import ProductAmountForm from "./ProductAmountForm";
 import { cartActions } from "../../store/cart-slice";
+import { deleteProductData } from "../../store/product-actions";
 
 const ProductItem = (props) => {
   const dispatch = useDispatch();
@@ -25,8 +26,8 @@ const ProductItem = (props) => {
   };
 
   const deleteProductHandler = () => {
-    
-  }
+    dispatch(deleteProductData(id));
+  };
 
   return (
     <li className={classes.products}>
@@ -34,8 +35,11 @@ const ProductItem = (props) => {
         <h3>{props.title}</h3>
         <div className={classes.description}>{props.description}</div>
         <div className={classes.price}>{formatedPrice}</div>
+        <div className={classes.actions}>
+          <button onClick={deleteProductHandler}>Delete</button>
+        </div>
       </div>
-      <button onClick={deleteProductHandler}>Delete</button>
+
       <div>
         <ProductAmountForm onAddToCart={addToCartHandler} />
       </div>

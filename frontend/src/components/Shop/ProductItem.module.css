@@ -11,7 +11,7 @@
 }
 
 .price {
-  margin-top: 0.25rem;
+  margin: 0.25rem 0;
   font-weight: bold;
   color: lightblue;
   font-size: 1.2rem;
@@ -19,4 +19,21 @@
 
 .description {
   font-size: italic;
+}
+
+.actions button {
+  font: inherit;
+  cursor: pointer;
+  background-color: #e13333;
+  border: 1px solid #e13333;
+  color: white;
+  padding: 0.2rem 1rem;
+  border-radius: 10px;
+}
+
+.actions button:hover,
+.actions button:active {
+  background-color: #881408;
+  border-color: #881408;
+  color: white;
 }
