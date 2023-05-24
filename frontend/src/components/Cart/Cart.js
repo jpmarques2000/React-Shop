@@ -5,7 +5,7 @@ import CartItem from "./CartItem";
 import classes from "./Cart.module.css";
 import Modal from "../UI/Modal";
 import { uiActions } from "../../store/ui-slice";
-import { fetchCartData, sendCartData } from "../../store/cart-actions";
+import { sendCartData } from "../../store/cart-actions";
 
 const Cart = () => {
   const cart = useSelector((state) => state.cart);
@@ -26,6 +26,9 @@ const Cart = () => {
         cartItems,
       })
     );
+    setTimeout(() => {
+      dispatch(uiActions.removeNotification());
+    }, 2000);
   };
 
   const cartItemsDisplay = (

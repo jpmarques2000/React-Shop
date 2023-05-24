@@ -1,4 +1,5 @@
 import axios from "axios";
+import { uiActions } from "./ui-slice";
 // import { cartActions } from "./cart-slice";
 
 export const fetchCartData = () => {
@@ -18,13 +19,26 @@ export const fetchCartData = () => {
       const cartData = await fetchData();
       console.log(cartData);
     } catch (error) {
-      console.log(error);
+      dispatch(
+        uiActions.showNotification({
+          status: "error",
+          title: "Error!",
+          message: "Failed to fetch cart data",
+        })
+      );
     }
   };
 };
 
 export const sendCartData = (cart) => {
-  return async () => {
+  return async (dispatch) => {
+    dispatch(
+      uiActions.showNotification({
+        status: "pending",
+        title: "Sending...",
+        message: "Sending cart data!",
+      })
+    );
     const sendCartRequest = async () => {
       await axios
         .post("http://localhost:8800/cart/", {
@@ -48,8 +62,22 @@ export const sendCartData = (cart) => {
     };
     try {
       await sendCartRequest();
+
+      dispatch(
+        uiActions.showNotification({
+          status: "success",
+          title: "Success",
+          message: "Cart data successefully sent",
+        })
+      );
     } catch (error) {
-      console.log(error);
+      dispatch(
+        uiActions.showNotification({
+          status: "error",
+          title: "Error!",
+          message: "Failed to send cart data!",
+        })
+      );
     }
   };
 };

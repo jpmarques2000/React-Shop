@@ -6,8 +6,7 @@ import Cart from "./components/Cart/Cart";
 import PageLayout from "./components/Layout/PageLayout";
 import NewProductForm from "./components/NewProduct/NewProductForm";
 import { fetchProductData } from "./store/product-actions";
-
-// let isInitialProducts = true;
+import Notification from "./components/UI/Notification";
 
 function App() {
   const dispatch = useDispatch();
@@ -16,27 +15,21 @@ function App() {
   const showNewProductForm = useSelector(
     (state) => state.ui.newProductFormIsVisible
   );
+  const notification = useSelector((state) => state.ui.notification);
 
   useEffect(() => {
     dispatch(fetchProductData());
   }, [dispatch, product]);
 
-  // useEffect(() => {
-  //   console.log('a1')
-  //   if(isInitialProducts) {
-  //     isInitialProducts = false;
-  //     return;
-  //   }
-
-  //   if(product.changed) {
-  //     console.log(product)
-  //     dispatch(sendNewProductData(product));
-  //   }
-
-  // }, [product, dispatch])
-
   return (
     <Fragment>
+      {notification && (
+        <Notification
+          status={notification.status}
+          title={notification.title}
+          message={notification.message}
+        />
+      )}
       <PageLayout>
         {showCart && <Cart />}
         {showNewProductForm && <NewProductForm />}

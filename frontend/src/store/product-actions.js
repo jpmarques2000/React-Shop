@@ -1,6 +1,7 @@
 import { productActions } from "./product-slice";
 
 import axios from "axios";
+import { uiActions } from "./ui-slice";
 
 export const fetchProductData = () => {
   return async (dispatch) => {
@@ -23,7 +24,13 @@ export const fetchProductData = () => {
         })
       );
     } catch (error) {
-      console.log(error);
+      dispatch(
+        uiActions.showNotification({
+          status: "error",
+          title: "Error!",
+          message: "Failed to fetch products",
+        })
+      );
     }
   };
 };
@@ -32,7 +39,7 @@ export const sendNewProductData = (product) => {
   return async (dispatch) => {
     const sendRequest = async () => {
       await axios
-        .post("http://localhost:8800/product/", {
+        .post("http://localhost:8800/produc/", {
           name: product.name,
           description: product.description,
           price: product.price,
@@ -46,26 +53,38 @@ export const sendNewProductData = (product) => {
     try {
       await sendRequest();
     } catch (error) {
-      console.log(error);
+      dispatch(
+        uiActions.showNotification({
+          status: "error",
+          title: "Error!",
+          message: "Failed to create new product",
+        })
+      );
     }
   };
 };
 
 export const deleteProductData = (id) => {
-  return async () => {
+  return async (dispatch) => {
     const sendDeleteRequest = async () => {
       await axios.delete("http://localhost:8800/product/" + id).then(() => {});
     };
     try {
       await sendDeleteRequest();
     } catch (error) {
-      console.log(error);
+      dispatch(
+        uiActions.showNotification({
+          status: "error",
+          title: "Error!",
+          message: "Failed to delete product data",
+        })
+      );
     }
   };
 };
 
 export const updateProductData = (product) => {
-  return async () => {
+  return async (dispatch) => {
     const sendUpdateRequest = async () => {
       await axios
         .put("http://localhost:8800/product/" + product.id, {
@@ -81,7 +100,13 @@ export const updateProductData = (product) => {
     try {
       await sendUpdateRequest();
     } catch (error) {
-      console.log(error);
+      dispatch(
+        uiActions.showNotification({
+          status: "error",
+          title: "Error!",
+          message: "Failed to update product data",
+        })
+      );
     }
   };
 };

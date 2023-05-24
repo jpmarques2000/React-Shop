@@ -67,6 +67,9 @@ const NewProductForm = () => {
         imageUrl: productImageUrl,
       })
     );
+    setTimeout(() => {
+      dispatch(uiActions.removeNotification());
+    }, 4000);
 
     dispatch(
       productActions.addNewProduct({
