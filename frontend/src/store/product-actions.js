@@ -39,7 +39,7 @@ export const sendNewProductData = (product) => {
   return async (dispatch) => {
     const sendRequest = async () => {
       await axios
-        .post("http://localhost:8800/produc/", {
+        .post("http://localhost:8800/product/", {
           name: product.name,
           description: product.description,
           price: product.price,

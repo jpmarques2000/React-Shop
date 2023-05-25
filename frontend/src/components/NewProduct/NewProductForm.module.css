@@ -15,7 +15,7 @@
   max-width: 100%;
 }
 
-.form{
+.form {
   margin: 0.5rem 0;
   overflow: auto;
 }
@@ -33,11 +33,12 @@
 .actions button {
   font: inherit;
   cursor: pointer;
-  background-color: transparent;
   border: 1px solid #4ca5b7;
   padding: 0.5rem 2rem;
   border-radius: 25px;
   margin-left: 1rem;
+  background-color: #4ca5b7;
+  color: white;
 }
 
 .actions button:hover,
@@ -51,9 +52,13 @@
   color: #4ca5b7;
 }
 
-.actions .button {
-  background-color: #4ca5b7;
-  color: white;
+.actions button:disabled,
+.actions button:disabled:hover,
+.actions button:disabled:active {
+  background-color: #ccc;
+  color: #292929;
+  border-color: #ccc;
+  cursor: not-allowed;
 }
 
 .invalid label {
