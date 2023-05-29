@@ -21,6 +21,7 @@ const ShopProducts = () => {
                 price={product.price}
                 title={product.name}
                 description={product.description}
+                image={product.image_url}
               />
             ))}
         </ul>

@@ -1,6 +1,6 @@
 .products {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   margin: 1rem;
   padding-bottom: 1rem;
   border-bottom: 1px solid #ccc;
@@ -19,6 +19,17 @@
 
 .description {
   font-size: italic;
+}
+
+.imageContainer {
+  width: 15%;
+  display: flex;
+  align-items: center;
+}
+
+.image {
+  height: 5rem;
+  width: 7rem;
 }
 
 .actions button {

@@ -31,6 +31,9 @@ const ProductItem = (props) => {
 
   return (
     <li className={classes.products}>
+      <div className={classes.imageContainer}>
+        <img className={classes.image} src={props.image} alt="Product" />
+      </div>
       <div>
         <h3>{props.title}</h3>
         <div className={classes.description}>{props.description}</div>
