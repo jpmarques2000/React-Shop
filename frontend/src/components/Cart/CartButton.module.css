@@ -1,7 +1,8 @@
 .button {
   background-color: transparent;
-  border-color: #d83535;
+  border-color: #36a4c5;
   color: white;
+  margin-right: 2rem;
 }
 
 .button:hover,

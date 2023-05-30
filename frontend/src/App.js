@@ -1,41 +1,20 @@
-import React, { Fragment, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React from "react";
 
-import ShopProducts from "./components/Shop/ShopProducts";
-import Cart from "./components/Cart/Cart";
+import { Route, Routes } from "react-router-dom";
+import ProductsLayout from "./pages/ProductsLayout";
+import AuthForm from "./components/Auth/AuthForm";
 import PageLayout from "./components/Layout/PageLayout";
-import NewProductForm from "./components/NewProduct/NewProductForm";
-import { fetchProductData } from "./store/product-actions";
-import Notification from "./components/UI/Notification";
 
 function App() {
-  const dispatch = useDispatch();
-  const product = useSelector((state) => state.product);
-  const showCart = useSelector((state) => state.ui.cartIsVisible);
-  const showNewProductForm = useSelector(
-    (state) => state.ui.newProductFormIsVisible
-  );
-  const notification = useSelector((state) => state.ui.notification);
-
-  useEffect(() => {
-    dispatch(fetchProductData());
-  }, [dispatch, product]);
-
   return (
-    <Fragment>
-      {notification && (
-        <Notification
-          status={notification.status}
-          title={notification.title}
-          message={notification.message}
-        />
-      )}
+    <>
       <PageLayout>
-        {showCart && <Cart />}
-        {showNewProductForm && <NewProductForm />}
-        <ShopProducts />
+        <Routes>
+          <Route path="/" element={<ProductsLayout />} />
+          <Route path="/authentication" element={<AuthForm />} />
+        </Routes>
       </PageLayout>
-    </Fragment>
+    </>
   );
 }
 
