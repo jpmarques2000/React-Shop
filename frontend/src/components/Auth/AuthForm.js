@@ -1,14 +1,16 @@
 import React from "react";
-import {
-  Form,
-} from 'react-router-dom';
+import { Link } from "react-router-dom";
 
 import classes from "./AuthForm.module.css";
 
 const AuthForm = () => {
+
+  const loginHandler = () => {
+    
+  }
   return (
     <>
-      {/* <Form className={classes.form}> */}
+      <form method="post" className={classes.form} onSubmit={loginHandler}>
         <h1>Log In</h1>
         <p>
           <label htmlFor="email">Email</label>
@@ -18,10 +20,11 @@ const AuthForm = () => {
           <label htmlFor="password">Password</label>
           <input id="password" type="password" name="password" required></input>
         </p>
-        {/* <div className={classes.action}>
-          <button>Save</button>
-        </div> */}
-      {/* </Form> */}
+
+        <div className={classes.action}>
+          <Link> Create a New User</Link>
+        </div>
+      </form>
     </>
   );
 };
