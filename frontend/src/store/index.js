@@ -12,6 +12,11 @@ const store = configureStore({
     product: productSlice.reducer,
     auth: authSlice.reducer,
   },
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({
+      immutableCheck: false,
+      serializableCheck: false,
+    }),
 });
 
 export default store;

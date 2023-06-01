@@ -37,3 +37,9 @@
 .actions .button--alt {
   color: #4ca5b7;
 }
+
+.invalid {
+  font-weight: bold;
+  color: red;
+  text-align: center;
+}

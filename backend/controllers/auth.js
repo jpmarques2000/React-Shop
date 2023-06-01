@@ -15,7 +15,9 @@ export const registerUser = (req, res) => {
     const q = "INSERT INTO users (username, password) VALUES (?,?)";
 
     db.query(q, [username, hash], (err, result) => {
-      console.log(err);
+      if (err) {
+        res.send({ err: err });
+      }
     });
   });
 };

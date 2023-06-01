@@ -8,13 +8,12 @@ export const register = (user) => {
   return async (dispatch) => {
     const registerNewUser = async () => {
       await axios
-        .post("http://localhost:8800/register/", {
+        .post("http://localhost:8080/register/", {
           username: user.username,
           password: user.password,
         })
         .then((response) => {
-          const { data } = response;
-          console.log(data);
+          console.log(response);
         });
     };
     try {
@@ -35,7 +34,7 @@ export const login = (user) => {
   return async (dispatch) => {
     const sendLoginRequest = async () => {
       await axios
-        .post("http://localhost:8800/login/", {
+        .post("http://localhost:8080/login/", {
           username: user.username,
           password: user.password,
         })
@@ -69,7 +68,7 @@ export const login = (user) => {
 export const verifyIsUserLoggedIn = () => {
   return async (dispatch) => {
     const verifyLogin = async () => {
-      await axios.get("http://localhost:8800/login/").then((response) => {
+      await axios.get("http://localhost:8080/login/").then((response) => {
         if (response.data.userIsLoggedIn === true) {
           dispatch(
             authActions.userLogin({

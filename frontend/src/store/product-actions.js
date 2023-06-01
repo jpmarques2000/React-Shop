@@ -6,7 +6,7 @@ import { uiActions } from "./ui-slice";
 export const fetchProductData = () => {
   return async (dispatch) => {
     const fetchData = async () => {
-      const response = await fetch("http://localhost:8800/product/");
+      const response = await fetch("http://localhost:8080/product/");
 
       if (!response.ok) {
         throw new Error("Could not fetch products data");
@@ -39,7 +39,7 @@ export const sendNewProductData = (product) => {
   return async (dispatch) => {
     const sendRequest = async () => {
       await axios
-        .post("http://localhost:8800/product/", {
+        .post("http://localhost:8080/product/", {
           name: product.name,
           description: product.description,
           price: product.price,
@@ -67,7 +67,7 @@ export const sendNewProductData = (product) => {
 export const deleteProductData = (id) => {
   return async (dispatch) => {
     const sendDeleteRequest = async () => {
-      await axios.delete("http://localhost:8800/product/" + id).then(() => {});
+      await axios.delete("http://localhost:8080/product/" + id).then(() => {});
     };
     try {
       await sendDeleteRequest();
@@ -87,7 +87,7 @@ export const updateProductData = (product) => {
   return async (dispatch) => {
     const sendUpdateRequest = async () => {
       await axios
-        .put("http://localhost:8800/product/" + product.id, {
+        .put("http://localhost:8080/product/" + product.id, {
           name: product.name,
           description: product.description,
           price: product.price,

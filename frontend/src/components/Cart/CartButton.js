@@ -3,6 +3,7 @@ import React, { Fragment } from "react";
 import classes from "./CartButton.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { uiActions } from "../../store/ui-slice";
+import { authActions } from "../../store/auth-slice";
 
 const CartButton = () => {
   const dispatch = useDispatch();
@@ -16,8 +17,15 @@ const CartButton = () => {
     dispatch(uiActions.toggleNewProduct());
   };
 
+  const logoutHandler = () => {
+    dispatch(authActions.userLogout());
+  };
+
   return (
     <Fragment>
+      <button onClick={logoutHandler} className={classes.button}>
+        <span>Logout</span>
+      </button>
       <button onClick={toggleNewProductFormHandler} className={classes.button}>
         <span>New Product</span>
       </button>

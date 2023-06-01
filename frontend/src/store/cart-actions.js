@@ -5,7 +5,7 @@ import { uiActions } from "./ui-slice";
 export const fetchCartData = () => {
   return async (dispatch) => {
     const fetchData = async () => {
-      const response = await fetch("http://localhost:8800/cart/");
+      const response = await fetch("http://localhost:8080/cart/");
 
       if (!response.ok) {
         throw new Error("Could not fetch products data");
@@ -41,7 +41,7 @@ export const sendCartData = (cart) => {
     );
     const sendCartRequest = async () => {
       await axios
-        .post("http://localhost:8800/cart/", {
+        .post("http://localhost:8080/cart/", {
           total_price: cart.totalPrice,
           total_quantity: cart.totalQuantity,
         })
@@ -50,7 +50,7 @@ export const sendCartData = (cart) => {
           console.log(data);
         });
       // await axios
-      //   .post("http://localhost:8800/cartItem/", {
+      //   .post("http://localhost:8080/cartItem/", {
       //     prod_id: cart.cartItems.id,
       //     cart_id: 1,
       //     quantity: cart.cartItems.quantity,

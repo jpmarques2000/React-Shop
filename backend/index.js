@@ -17,6 +17,7 @@ app.use(cors({
   methods: ["GET", 'POST', 'PUT', 'DELETE'],
   credentials: true
 }));
+// app.use(cors());
 
 app.use(cookieParser());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -37,4 +38,4 @@ app.use("/", cartRoutes);
 app.use("/", productRoutes);
 app.use("/", authRoutes);
 
-app.listen(8800);
+app.listen(8080);

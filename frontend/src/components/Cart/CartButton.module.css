@@ -2,7 +2,7 @@
   background-color: transparent;
   border-color: #36a4c5;
   color: white;
-  margin-right: 2rem;
+  margin-right: 1.25rem;
 }
 
 .button:hover,
@@ -16,7 +16,7 @@
 
 .badge {
   background-color: #d83535;
-  border-radius: 30px;
-  padding: 0.15rem 1.25rem;
+  border-radius: 20px;
+  padding: 0.15rem 0.75rem;
   color: #1d1d1d;
 }
