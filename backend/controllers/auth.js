@@ -1,5 +1,5 @@
 import { db } from "../db.js";
-import bcrypt from 'bcrypt'
+import bcrypt from "bcrypt";
 
 const saltRounds = 10;
 
@@ -18,6 +18,14 @@ export const registerUser = (req, res) => {
       console.log(err);
     });
   });
+};
+
+export const verifyUserIsLogin = (req, res) => {
+  if (req.session.user) {
+    res.send({ userIsLoggedIn: true, user: req.session.user });
+  } else {
+    res.send({ userIsLoggedIn: false });
+  }
 };
 
 export const loginUser = (req, res) => {
