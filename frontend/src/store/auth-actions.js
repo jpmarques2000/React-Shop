@@ -42,17 +42,18 @@ export const login = (user) => {
           if (response.data.message) {
             console.log(response.data.message);
           } else {
-            dispatch(
-              authActions.userLogin({
-                username: response.data.user[0].username,
-                isLoggedIn: true,
-              })
-            );
+            localStorage.setItem("user", JSON.stringify(response.data));
           }
         });
     };
     try {
       await sendLoginRequest();
+      const user = JSON.parse(localStorage.getItem("user"));
+      dispatch(
+        authActions.userLogin({
+          username: user[0].username,
+        })
+      );
     } catch (error) {
       dispatch(
         uiActions.showNotification({
@@ -73,7 +74,6 @@ export const verifyIsUserLoggedIn = () => {
           dispatch(
             authActions.userLogin({
               username: response.data.user[0].username,
-              isLoggedIn: true,
             })
           );
         }
@@ -91,4 +91,8 @@ export const verifyIsUserLoggedIn = () => {
       );
     }
   };
+};
+
+export const logout = () => {
+  localStorage.removeItem("user");
 };

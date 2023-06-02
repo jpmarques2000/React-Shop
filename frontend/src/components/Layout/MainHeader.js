@@ -15,7 +15,7 @@ function MainHeader() {
             <Link to="/">Products</Link>
           </li>
           <li>
-            <Link to="/authentication">Login</Link>
+            <Link to="/login">Login</Link>
           </li>
         </ul>
       </nav>

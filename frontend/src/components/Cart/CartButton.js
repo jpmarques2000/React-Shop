@@ -19,6 +19,7 @@ const CartButton = () => {
 
   const logoutHandler = () => {
     dispatch(authActions.userLogout());
+    sessionStorage.removeItem("userId");
   };
 
   return (
