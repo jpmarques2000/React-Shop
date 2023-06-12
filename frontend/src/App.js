@@ -1,20 +1,34 @@
 import React, { useEffect } from "react";
 
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useNavigate } from "react-router-dom";
 import ProductsLayout from "./pages/ProductsLayout";
 import AuthForm from "./components/Auth/AuthForm";
 import PageLayout from "./components/Layout/PageLayout";
 import { useDispatch } from "react-redux";
-import { verifyIsUserLoggedIn } from "./store/auth-actions";
 import PrivateRoutes from "./utils/PrivateRoutes";
+import axios from "axios";
+import { authActions } from "./store/auth-slice";
 
 function App() {
-  // const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
+  const navigate = useNavigate();
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(verifyIsUserLoggedIn());
-  }, [dispatch]);
+    const verifyLogin = async () => {
+      await axios.get("http://localhost:8080/login/").then((response) => {
+        if (response.data.userIsLoggedIn === true) {
+          dispatch(
+            authActions.userLogin({
+              username: response.data.user[0].username,
+            })
+          );
+          navigate("/");
+        }
+      });
+    };
+    verifyLogin();
+  }, [dispatch, navigate]);
+
   return (
     <>
       <PageLayout>

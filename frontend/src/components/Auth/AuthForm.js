@@ -2,9 +2,13 @@ import React, { useState } from "react";
 
 import classes from "./AuthForm.module.css";
 import { useDispatch } from "react-redux";
-import { login, register } from "../../store/auth-actions";
+import { register } from "../../store/auth-actions";
+import { useNavigate } from "react-router";
+import axios from "axios";
+import { authActions } from "../../store/auth-slice";
 
 const AuthForm = () => {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const [enteredUsername, setEnteredUsername] = useState("");
@@ -58,12 +62,30 @@ const AuthForm = () => {
       return;
     }
 
-    dispatch(
-      await login({
+    // dispatch(
+    //   await login({
+    //     username: enteredUsername,
+    //     password: enteredPassword,
+    //   })
+    // );
+
+    await axios
+      .post("http://localhost:8080/login/", {
         username: enteredUsername,
         password: enteredPassword,
       })
-    );
+      .then((response) => {
+        if (response.data.message) {
+          console.log(response.data.message);
+        } else {
+          dispatch(
+            authActions.userLogin({
+              username: response.data[0].username,
+            })
+          );
+          navigate("/");
+        }
+      });
 
     resetInputs();
   };
