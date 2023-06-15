@@ -1,13 +1,15 @@
 .button {
   background-color: transparent;
-  border-color: #36a4c5;
+  /* border-color: #36a4c5; */
   color: white;
-  margin-right: 1.25rem;
+  /* margin-right: 0.25rem; */
+  margin-left: 0.2rem;
+  font-size: 1.25rem;
 }
 
 .button:hover,
 .button:active {
-  color: white;
+  color: #4ca5b7;
 }
 
 .button span {

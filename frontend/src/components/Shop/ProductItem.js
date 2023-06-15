@@ -34,16 +34,18 @@ const ProductItem = (props) => {
       <div className={classes.imageContainer}>
         <img className={classes.image} src={props.image} alt="Product" />
       </div>
-      <div>
-        <h3>{props.title}</h3>
-        <div className={classes.description}>{props.description}</div>
-        <div className={classes.price}>{formatedPrice}</div>
-        <div className={classes.actions}>
-          <button onClick={deleteProductHandler}>Delete</button>
+      <div className={classes.products_container}>
+        <div>
+          <h3>{props.title}</h3>
+          <div className={classes.description}>{props.description}</div>
+          <div className={classes.price}>{formatedPrice}</div>
+          <div className={classes.actions}>
+            <button onClick={deleteProductHandler}>Delete</button>
+          </div>
         </div>
       </div>
 
-      <div>
+      <div className={classes.amount_form}>
         <ProductAmountForm onAddToCart={addToCartHandler} />
       </div>
     </li>

@@ -1,5 +1,6 @@
 .products {
   display: flex;
+  flex-direction: row;
   justify-content: space-around;
   margin: 1rem;
   padding-bottom: 1rem;
@@ -8,6 +9,10 @@
 
 .products h3 {
   margin: 0 0 0.25rem 0;
+}
+
+.products_container {
+  width: 50%;
 }
 
 .price {
@@ -19,6 +24,11 @@
 
 .description {
   font-size: italic;
+}
+
+.amount_form {
+  width: 15%;
+  margin-left: 2rem;
 }
 
 .imageContainer {

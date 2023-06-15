@@ -15,6 +15,7 @@ function App() {
 
   useEffect(() => {
     const verifyLogin = async () => {
+      let firstLoad = true;
       await axios.get("http://localhost:8080/login/").then((response) => {
         if (response.data.userIsLoggedIn === true) {
           dispatch(
@@ -22,12 +23,15 @@ function App() {
               username: response.data.user[0].username,
             })
           );
-          navigate("/");
+          if (firstLoad) {
+            firstLoad = false;
+            navigate("/");
+          }
         }
       });
     };
     verifyLogin();
-  }, [dispatch, navigate]);
+  }, [dispatch]);
 
   return (
     <>

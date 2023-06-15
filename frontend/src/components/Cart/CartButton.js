@@ -8,6 +8,7 @@ import { authActions } from "../../store/auth-slice";
 const CartButton = () => {
   const dispatch = useDispatch();
   const cartTotalQuantity = useSelector((state) => state.cart.totalQuantity);
+  const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
 
   const toggleCartHandler = () => {
     dispatch(uiActions.toggle());
@@ -24,9 +25,6 @@ const CartButton = () => {
 
   return (
     <Fragment>
-      <button onClick={logoutHandler} className={classes.button}>
-        <span>Logout</span>
-      </button>
       <button onClick={toggleNewProductFormHandler} className={classes.button}>
         <span>New Product</span>
       </button>
@@ -34,6 +32,11 @@ const CartButton = () => {
         <span>My Cart</span>
         <span className={classes.badge}>{cartTotalQuantity}</span>
       </button>
+      {isLoggedIn && (
+        <button onClick={logoutHandler} className={classes.button}>
+          <span>Logout</span>
+        </button>
+      )}
     </Fragment>
   );
 };
