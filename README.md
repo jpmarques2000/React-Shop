@@ -10,4 +10,4 @@ concluir o pedido e também possuí validações nos formulários de cadastro de
 
 * Criação e fechamento de pedido
 
-  Tecnologias utilizadas: React.js, MySql, React redux.
+  Tecnologias utilizadas: React.js, MySql , React redux e React navigation.
